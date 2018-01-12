@@ -1,4 +1,4 @@
-# README - TrackMyHealth
+# TrackMyHealth
 
 A web-based health tracking application to record health data over time such as blood pressure, blood glucose, weight, etc. Visually monitor trends in health data with graphs and charts.
 
