@@ -1,0 +1,2 @@
+class WeightMeasurement < ApplicationRecord
+end
