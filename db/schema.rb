@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113005443) do
+ActiveRecord::Schema.define(version: 20180113171337) do
 
   create_table "blood_glucose_measurements", force: :cascade do |t|
     t.integer "value"
     t.text "notes"
-    t.datetime "taken_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blood_pressure_measurement_locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blood_pressure_measurement_positions", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,7 +36,8 @@ ActiveRecord::Schema.define(version: 20180113005443) do
     t.integer "diastolic"
     t.integer "pulse"
     t.text "notes"
-    t.datetime "taken_at"
+    t.integer "blood_pressure_measurement_position_id"
+    t.integer "blood_pressure_measurement_location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,7 +45,6 @@ ActiveRecord::Schema.define(version: 20180113005443) do
   create_table "weight_measurements", force: :cascade do |t|
     t.float "value"
     t.text "notes"
-    t.datetime "taken_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -5,7 +5,8 @@ class CreateBloodPressureMeasurements < ActiveRecord::Migration[5.1]
       t.integer :diastolic
       t.integer :pulse
       t.text :notes
-      t.datetime :taken_at
+      t.integer :blood_pressure_measurement_position_id
+      t.integer :blood_pressure_measurement_location_id
 
       t.timestamps
     end
