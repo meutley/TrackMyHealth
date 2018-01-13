@@ -1,0 +1,2 @@
+class BloodPressureMeasurement < ApplicationRecord
+end

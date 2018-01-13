@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  systolic: 1
+  diastolic: 1
+  pulse: 1
+  notes: MyText
+  taken_at: 2018-01-12 18:50:51
+
+two:
+  systolic: 1
+  diastolic: 1
+  pulse: 1
+  notes: MyText
+  taken_at: 2018-01-12 18:50:51
