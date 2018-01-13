@@ -1,0 +1,47 @@
+<% if @measurement != nil && @measurement.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@measurement.errors.count, "error") %> prohibited this measurement from being saved:</h2>
+
+    <ul>
+        <% @measurement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="container">
+    <%= form_tag(blood_pressure_new_path, method: "post", class: "form") do %>
+        <div class="form-group row">
+            <%= label_tag(:systolic, "Systolic", class: "col-sm-1") %>
+            <div class="col-sm-2">
+                <%= text_field_tag(:systolic, "", class: "form-control") %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <%= label_tag(:diastolic, "Diastolic", class: "col-sm-1") %>
+            <div class="col-sm-2">
+                <%= text_field_tag(:diastolic, "", class: "form-control") %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <%= label_tag(:pulse, "Pulse", class: "col-sm-1") %>
+            <div class="col-sm-2">
+                <%= text_field_tag(:pulse, "", class: "form-control") %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <%= label_tag(:notes, "Notes", class: "col-sm-4") %>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <%= text_area(:notes, "", size: "15x4", class: "form-control") %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <input type="submit" value="Save" class="btn btn-primary">
+            </div>
+        </div>
+    <% end %>
+</div>

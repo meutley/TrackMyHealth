@@ -1,4 +1,8 @@
 class BloodPressureService
+    def self.get
+        return BloodPressureMeasurement.all
+    end
+    
     def self.create(position_id, location_id, systolic, diastolic, pulse = nil, notes = nil)
         return BloodPressureMeasurement.create(
             blood_pressure_measurement_position_id: position_id,
