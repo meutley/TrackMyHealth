@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113005051) do
+ActiveRecord::Schema.define(version: 20180113005307) do
+
+  create_table "blood_glucose_measurements", force: :cascade do |t|
+    t.integer "value"
+    t.text "notes"
+    t.datetime "taken_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "blood_pressure_measurements", force: :cascade do |t|
     t.integer "systolic"
