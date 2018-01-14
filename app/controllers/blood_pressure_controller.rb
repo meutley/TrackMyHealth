@@ -1,4 +1,6 @@
 class BloodPressureController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @measurements = BloodPressureService.get
   end
