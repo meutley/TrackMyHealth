@@ -3,6 +3,7 @@ class BloodPressureMeasurement < ApplicationRecord
     has_one :blood_pressure_measurement_location
     has_one :user
 
+    validates :user_id, presence: true, numericality: { only_integer: true }
     validates :blood_pressure_measurement_position_id, numericality: { only_integer: true }
     validates :blood_pressure_measurement_location_id, numericality: { only_integer: true }
     validates :systolic, presence: true, numericality: { only_integer: true }
