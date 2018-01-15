@@ -1,0 +1,20 @@
+@import "theme";
+
+$navbar-link-hover-background: #0050B2;
+
+nav.navbar.bg-light {
+    margin: 0 0 16px 0;
+    padding: 0;
+    background: $primary-blue !important;
+
+    a.nav-link {
+        color: $white;
+        text-decoration: none;
+        padding: 16px 35px;
+        
+        &:hover {
+            color: $white;
+            background: $navbar-link-hover-background;
+        }
+    }
+}
