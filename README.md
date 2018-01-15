@@ -18,6 +18,24 @@ A web-based health tracking application to record and analyze personal health da
 ---
 
 ## Running Locally
-To run locally, issue the command:
+Install gems:
+
+`bundle install`
+
+Seed the database (SQLite)
+
+`rails db:seed`
+
+Start the development server
 
 `rails server`
+
+**Note**
+
+I have yet to resolve an issue regarding the bcrypt gem. If you receive an error about bcrypt or bcrypt_ext after running `bundle install`, run the following commands:
+
+`gem uninstall bcrypt`
+
+`gem uninstall bcrypt-ruby`
+
+`gem install bcrypt --platform=ruby`.
