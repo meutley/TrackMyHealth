@@ -1,0 +1,12 @@
+@import "theme";
+
+.card.login-card, .card.signup-card, .card.edit-registration-card {
+    >.card-header {
+        background: $primary-blue-light;
+        color: #fff;
+    }
+    
+    >.card-block {
+        padding-top: 12px;
+    }
+}
