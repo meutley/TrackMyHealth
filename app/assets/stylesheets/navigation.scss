@@ -7,6 +7,10 @@ nav.navbar.bg-light {
     padding: 0;
     background: $primary-blue !important;
 
+    .dropdown-menu {
+        background: $primary-blue;
+    }
+
     a.nav-link {
         color: $white;
         text-decoration: none;
@@ -15,6 +19,26 @@ nav.navbar.bg-light {
         &:hover {
             color: $white;
             background: $navbar-link-hover-background;
+        }
+    }
+
+    .nav-item.dropdown {
+        &.show {
+            background: $navbar-link-hover-background;
+
+            .nav-link.dropdown-toggle {
+                color: $white;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        a.dropdown-item {
+            color: $white;
+
+            &:hover {
+                background: $navbar-link-hover-background;
+            }
         }
     }
 }
