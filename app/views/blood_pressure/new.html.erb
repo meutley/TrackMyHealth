@@ -16,6 +16,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
+            <h1>New Blood Pressure Measurement</h1>
             <%= form_for @measurement, url: { action: "new" }, html: { class: "form" } do |f| %>
                 <div class="form-group row">
                     <%= f.label(:blood_pressure_measurement_position_id, "Position", class: "col-sm-1 control-label") %>
