@@ -1,0 +1,7 @@
+<div class="card-header">
+    <% if id != nil %>
+        <a href="<%= "#{link_path}/#{id}" %>"><%= title %></a>
+    <% else %>
+        <%= title %>
+    <% end %>
+</div>

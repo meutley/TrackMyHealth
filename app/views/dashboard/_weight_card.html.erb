@@ -1,0 +1,11 @@
+<%= render partial: 'dashboard/card_header', locals: { title: "Weight", link_path: blood_pressure_view_path, id: @model.weight&.id }%>
+<% if @model.weight != nil %>
+    <div class="card-body">
+        <%= @model.weight.value %>
+    </div>
+    <div class="card-footer">
+        Today at 7:32am
+    </div>
+<% else %>
+    <%= render partial: 'dashboard/no_data' %>
+<% end %>

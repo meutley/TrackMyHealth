@@ -1,8 +1,18 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1>Dashboard#index</h1>
-            <p>Find me in app/views/dashboard/index.html.erb</p>
+            <h1>Dashboard</h1>
+            <div class="card-deck">
+                <div class="card dashboard-card text-center">
+                    <%= render partial: 'dashboard/blood_pressure_card', locals: { model: @model } %>
+                </div>
+                <div class="card dashboard-card text-center">
+                    <%= render partial: 'dashboard/blood_glucose_card', locals: { model: @model } %>
+                </div>
+                <div class="card dashboard-card text-center">
+                    <%= render partial: 'dashboard/weight_card', locals: { model: @model } %>
+                </div>
+            </div>
         </div>
     </div>
 </div>

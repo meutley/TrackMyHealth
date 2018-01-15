@@ -1,3 +1,27 @@
-// Place all the styles related to the Dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "theme";
+
+.card.dashboard-card {
+    .card-header {
+        background: $primary-blue-lightest;
+        color: $white;
+        text-shadow: 1px 1px $primary-blue-dark;
+
+        a {
+            color: inherit;
+        }
+    }
+    
+    .card-body {
+        font-size: 48pt;
+
+        p {
+            font-size: 13pt;
+            color: #555;
+        }
+    }
+
+    .card-footer {
+        font-size: 10pt;
+        color: #666;
+    }
+}

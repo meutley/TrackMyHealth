@@ -1,0 +1,14 @@
+<%= render partial: 'dashboard/card_header', locals: { title: "Blood Pressure", link_path: blood_pressure_view_path, id: @model.blood_pressure&.id }%>
+<% if @model.blood_pressure != nil %>
+    <div class="card-body">
+        <%= blood_pressure_display(@model.blood_pressure) %>
+        <p>
+            Pulse: <%= @model.blood_pressure.pulse %>
+        </p>
+    </div>
+    <div class="card-footer">
+        <%= @model.blood_pressure.created_at.in_time_zone("Central Time (US & Canada)").strftime("%-m/%-d/%Y %I:%M %p") %>
+    </div>
+<% else %>
+    <%= render partial: 'dashboard/no_data' %>
+<% end %>
