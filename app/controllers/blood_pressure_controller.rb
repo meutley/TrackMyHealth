@@ -6,19 +6,20 @@ class BloodPressureController < ApplicationController
   end
 
   def new
+    @positions = BloodPressureMeasurementPosition.all.order(:name)
+    @locations = BloodPressureMeasurementLocation.all.order(:name)
+    
     if request.post?
       user_id = current_user.id
-      systolic = params[:systolic]
-      diastolic = params[:diastolic]
-      pulse = params[:pulse]
-      notes = params[:notes]
       
-      @measurement = BloodPressureService.create(user_id, 1, 1, systolic, diastolic, pulse, notes)
-      if !@measurement.valid?    # @measurement.save
+      @measurement = BloodPressureService.create(user_id, params[:blood_pressure_measurement])
+      if @measurement.save
         redirect_to blood_pressure_index_path
       else
         render :new
       end
+    else
+      @measurement = BloodPressureMeasurement.new
     end
   end
 end
