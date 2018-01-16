@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :blood_pressure_measurements
   has_many :blood_glucose_measurements
+
+  validates :timezone, presence: true
 end

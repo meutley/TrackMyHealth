@@ -17,6 +17,11 @@
         p {
             font-size: 13pt;
             color: #555;
+
+            &.unit-label {
+                margin-top: -10px;
+                font-size: 12pt;
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 <div class="card-header">
-    <% if id != nil %>
-        <a href="<%= "#{link_path}/#{id}" %>"><%= title %></a>
+    <% if defined?(link_path) && !link_path.nil? %>
+        <a href="<%= card_header_link(link_path, defined?(id) ? id : nil) %>"><%= title %></a>
     <% else %>
         <%= title %>
     <% end %>
