@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1>Dashboard</h1>
+            <h1 class="page-title">Dashboard <span class="subtitle">(<a href="<%= dashboard_customize_path %>"><i class="fa fa-cog"></i>&nbsp;Customize</a>)</span></h1>
             <div class="card-deck">
                 <div class="card dashboard-card text-center">
                     <%= render partial: 'dashboard/blood_pressure_card', locals: { model: @model } %>

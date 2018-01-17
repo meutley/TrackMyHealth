@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Customize Dashboard</h1>
+            <form action="<%= dashboard_customize_path %>" method="POST" id="customize-dashboard-form">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <label for="available-modules">Available modules</label>
+                        <select size="10" id="available-modules" class="form-control">
+                            <option>Blood Glucose</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1 action-links">
+                        <a href="#" class="action-link" id="btn-make-available"><i class="fa fa-arrow-left"></i></a>
+                        <a href="#" class="action-link" id="btn-make-active"><i class="fa fa-arrow-right"></i></a>
+                        <a href="#" class="action-link" id="btn-move-up"><i class="fa fa-arrow-up"></i></a>
+                        <a href="#" class="action-link" id="btn-move-down"><i class="fa fa-arrow-down"></i></a>
+                    </div>
+                    <div class="col-sm-5">
+                        <label for="active-modules">Active modules</label>
+                        <select size="10" id="active-modules" class="form-control">
+                            <option>Blood Pressure</option>
+                            <option>Weight</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row buttons-row">
+                    <div class="col-sm-12">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a href="<%= dashboard_path %>">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(() => {
+        Dashboard.Customize.init();
+    });
+</script>

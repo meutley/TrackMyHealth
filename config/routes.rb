@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboard#index'
   get 'dashboard/index'
+  get 'dashboard/customize'
+  post 'dashboard/customize'
 
   devise_scope :user do
     get 'users/profile' => 'users/registrations#profile'

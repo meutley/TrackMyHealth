@@ -30,3 +30,38 @@
         color: #666;
     }
 }
+
+.page-title {
+    padding-bottom: 20px;
+    
+    .subtitle {
+        font-size: 13pt;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+#customize-dashboard-form {
+    label {
+        font-weight: bold;
+    }
+
+    .buttons-row {
+        padding-top: 20px;
+    }
+
+    .action-links {
+        text-align: center;
+        padding-top: 24pt;
+        
+        .action-link {
+            font-size: 20pt;
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            margin-bottom: 6px;
+        }
+    }
+}
