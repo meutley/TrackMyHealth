@@ -1,10 +1,13 @@
-<%= render partial: 'dashboard/card_header', locals: { title: "Weight", link_path: blood_pressure_view_path, id: @model.weight&.id }%>
+<%= render partial: 'dashboard/card_header', locals: { title: "Weight", link_path: weight_path, id: @model.weight&.id }%>
 <% if @model.weight != nil %>
     <div class="card-body">
         <%= @model.weight.value %>
+        <p class="unit-label">
+            lbs
+        </p>
     </div>
     <div class="card-footer">
-        Today at 7:32am
+        <%= to_user_timezone_formatted(@model.weight.created_at) %>
     </div>
 <% else %>
     <%= render partial: 'dashboard/no_data' %>

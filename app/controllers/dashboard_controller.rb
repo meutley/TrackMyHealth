@@ -4,8 +4,9 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    blood_pressure = BloodPressureMeasurement.where(user_id: current_user.id).order(created_at: :desc).first
-    @model = DashboardViewModel.new(blood_pressure, nil, nil)
+    @model = DashboardViewModel.new(
+      BloodPressureMeasurement.most_recent_for_user(current_user.id),
+      nil)
 
     @module_rows = get_ordered_module_rows(DashboardModule.active_for_user(current_user.id).reverse).sort_by {|m| m.length}
     @module_rows.reverse!

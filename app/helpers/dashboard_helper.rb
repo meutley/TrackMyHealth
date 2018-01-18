@@ -22,13 +22,12 @@ module DashboardHelper
         i = 0
         while i < modules.length
             modules_row.push(modules[i])
+            i += 1
             
             if (i >= modules.length || i % NUMBER_OF_CARDS_PER_ROW == 0)
                 result.push(modules_row.reverse)
                 modules_row = Array.new
             end
-            
-            i += 1
         end
 
         return result
@@ -40,6 +39,8 @@ module DashboardHelper
         case dashboard_module&.name
         when "Blood Pressure"
             html_out += render partial: "dashboard/blood_pressure_card", locals: { model: model }
+        when "Weight"
+            html_out += render partial: "dashboard/weight_card", locals: { model: model }
         else
             html_out += render partial: "dashboard/placeholder_card", locals: { title: "(Placeholder)" }
         end

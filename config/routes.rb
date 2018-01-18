@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'blood_pressure/new'
   post 'blood_pressure/new'
   get 'blood_pressure/view'
+  
+  get 'weight', to: 'weight#index'
 
   get 'dashboard', to: 'dashboard#index'
   get 'dashboard/index'
