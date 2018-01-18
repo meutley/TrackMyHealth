@@ -22,7 +22,7 @@ App.Plugins.MovableList = App.Plugins.MovableList || (function ($) {
         $selectedOptions.each(function() {
             var newPos = $allOptions.index(this) - 1;
             if (newPos > -1) {
-                $allOptions.eq(newPos).before("<option selected='selected'>" + $(this).text() + "</option>");
+                $allOptions.eq(newPos).before("<option value=" + $(this).val() + " selected='selected'>" + $(this).text() + "</option>");
                 $(this).remove();
             }
         });
@@ -35,7 +35,7 @@ App.Plugins.MovableList = App.Plugins.MovableList || (function ($) {
         $selectedOptions.each(function() {
             var newPos = $allOptions.index(this) + 1;
             if (newPos < countOptions) {
-                $allOptions.eq(newPos).after("<option selected='selected'>" + $(this).text() + "</option>");
+                $allOptions.eq(newPos).after("<option value=" + $(this).val() + " selected='selected'>" + $(this).text() + "</option>");
                 $(this).remove();
             }
         });

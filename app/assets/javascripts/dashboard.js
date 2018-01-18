@@ -5,6 +5,9 @@ Dashboard.Customize = Dashboard.Customize || (function () {
         var $form = $('#customize-dashboard-form');
         var formAction = $form.attr('action');
         var formMethod = $form.attr('method');
+        var $btnSubmit = $($form.find('#btn-submit')[0]);
+        var $responseMessage = $('#response-message');
+        
         var $availableModules = $('#available-modules');
         var $activeModules = $('#active-modules');
 
@@ -15,10 +18,13 @@ Dashboard.Customize = Dashboard.Customize || (function () {
         $form.on('submit', (e) => {
             e.preventDefault();
 
-            var $activeModulesOptions = $availableModules.find('option');
+            $responseMessage.hide();
+            $btnSubmit.attr('disabled', 'disabled');
+
+            var $activeModulesOptions = $activeModules.find('option');
             var activeModules = [];
-            var availableModules = $.each($activeModulesOptions, (index, option) => {
-                activeModules.push($(option).text());
+            $.each($activeModulesOptions, (index, option) => {
+                activeModules.push($(option).val());
             });
 
             $.ajax({
@@ -27,8 +33,13 @@ Dashboard.Customize = Dashboard.Customize || (function () {
                 data: {
                     activeModules: activeModules
                 }
-            }).then(() => {
-
+            }).done((res) => {
+                $responseMessage.removeClass('text-danger').addClass('text-success').text(res.message);
+            }).fail((err) => {
+                $responseMessage.removeClass('text-success').addClass('text-danger').text(err.message);
+            }).always(() => {
+                $responseMessage.show();
+                $btnSubmit.removeAttr('disabled');
             });
         });
     }

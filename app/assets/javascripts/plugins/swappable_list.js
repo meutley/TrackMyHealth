@@ -19,7 +19,7 @@ App.Plugins.SwappableList = App.Plugins.SwappableList || (function ($) {
     var _swapSelectionToList = function ($sourceList, $targetList) {
         var $selectedOptions = $sourceList.find('option:selected');
         $selectedOptions.each(function () {
-            $targetList.append('<option>' + $(this).text() + '</option>');
+            $targetList.append("<option value=" + $(this).val() + ">" + $(this).text() + "</option>");
             $(this).remove();
         });
     }

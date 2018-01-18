@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116221245) do
+ActiveRecord::Schema.define(version: 20180118031209) do
 
   create_table "blood_pressure_measurement_locations", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 20180116221245) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_blood_pressure_measurements_on_user_id"
+  end
+
+  create_table "dashboard_modules", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_active_dashboard_modules", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "dashboard_module_id"
+    t.integer "user_id"
+    t.integer "sort_order"
   end
 
   create_table "users", force: :cascade do |t|

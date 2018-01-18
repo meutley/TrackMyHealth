@@ -1,33 +1,39 @@
 @import "theme";
 
-.card.dashboard-card {
-    .card-header {
-        background: $primary-blue-lightest;
-        color: $white;
-        text-shadow: 1px 1px $primary-blue-dark;
-
-        a {
-            color: inherit;
-        }
+.card-deck {
+    &:not(:last-child) {
+        padding-bottom: 36px;
     }
     
-    .card-body {
-        font-size: 48pt;
+    .card.dashboard-card {
+        .card-header {
+            background: $primary-blue-lightest;
+            color: $white;
+            text-shadow: 1px 1px $primary-blue-dark;
 
-        p {
-            font-size: 13pt;
-            color: #555;
-
-            &.unit-label {
-                margin-top: -10px;
-                font-size: 12pt;
+            a {
+                color: inherit;
             }
         }
-    }
+        
+        .card-body {
+            font-size: 48pt;
 
-    .card-footer {
-        font-size: 10pt;
-        color: #666;
+            p {
+                font-size: 13pt;
+                color: #555;
+
+                &.unit-label {
+                    margin-top: -10px;
+                    font-size: 12pt;
+                }
+            }
+        }
+
+        .card-footer {
+            font-size: 10pt;
+            color: #666;
+        }
     }
 }
 
@@ -46,6 +52,10 @@
 #customize-dashboard-form {
     label {
         font-weight: bold;
+    }
+
+    #response-message {
+        display: none;
     }
 
     .buttons-row {
