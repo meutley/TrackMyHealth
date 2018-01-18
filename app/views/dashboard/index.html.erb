@@ -4,14 +4,9 @@
             <h1 class="page-title">Dashboard <span class="subtitle">(<a href="<%= dashboard_customize_path %>"><i class="fa fa-cog"></i>&nbsp;Customize</a>)</span></h1>
             <% @module_rows.each do |module_row| %>
                 <div class="card-deck">
-                    <% module_row.each do |m| %>
-                        <div class="card dashboard-card text-center">
-                            <% if m.name == "Blood Pressure" %>
-                                <%= render partial: 'dashboard/blood_pressure_card', locals: { model: @model } %>
-                            <% else %>
-                                <%= render partial: 'dashboard/placeholder_card', locals: { title: m.name } %>
-                            <% end %>
-                        </div>
+                    <% module_row.each_with_index do |m,i| %>
+                        <%= render_dashboard_module_card(m, @model) %>
+                        <%= render_remaining_placeholder_cards(i) if needs_placeholders(i, module_row.length) %>
                     <% end %>
                 </div>
             <% end %>

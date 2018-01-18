@@ -33,4 +33,32 @@ module DashboardHelper
 
         return result
     end
+    
+    def render_dashboard_module_card(dashboard_module, model)
+        html_out = '<div class="card dashboard-card text-center">'
+        
+        case dashboard_module&.name
+        when "Blood Pressure"
+            html_out += render partial: "dashboard/blood_pressure_card", locals: { model: model }
+        else
+            html_out += render partial: "dashboard/placeholder_card", locals: { title: "(Placeholder)" }
+        end
+        
+        html_out += '</div>'
+        
+        return html_out.html_safe
+    end
+    
+    def render_remaining_placeholder_cards(i)
+        html_out = ''
+        (3 - (i + 1)).times do
+            html_out += render_dashboard_module_card(nil, nil)
+        end
+        
+        return html_out.html_safe
+    end
+    
+    def needs_placeholders(i, modules_count)
+        return (i + 1) % 3 != 0 && i == modules_count - 1
+    end
 end

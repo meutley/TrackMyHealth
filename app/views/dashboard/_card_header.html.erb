@@ -1,4 +1,4 @@
-<div class="card-header">
+<div class="card-header<%= " placeholder" if defined?(is_placeholder) && is_placeholder == true %>">
     <% if defined?(link_path) && !link_path.nil? %>
         <a href="<%= card_header_link(link_path, defined?(id) ? id : nil) %>"><%= title %></a>
     <% else %>

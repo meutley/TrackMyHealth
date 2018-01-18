@@ -10,6 +10,12 @@
             background: $primary-blue-lightest;
             color: $white;
             text-shadow: 1px 1px $primary-blue-dark;
+            
+            &.placeholder {
+                background: $light-gray;
+                color: $medium-gray;
+                text-shadow: 0 0;
+            }
 
             a {
                 color: inherit;
@@ -18,6 +24,12 @@
         
         .card-body {
             font-size: 48pt;
+            
+            &.placeholder {
+                span {
+                    color: $medium-gray !important;
+                }
+            }
 
             p {
                 font-size: 13pt;
