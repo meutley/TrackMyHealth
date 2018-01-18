@@ -6,27 +6,30 @@ class BloodPressureController < ApplicationController
   end
 
   def new
+    @measurement = BloodPressureMeasurement.new
     @positions = BloodPressureMeasurementPosition.all.order(:name)
     @locations = BloodPressureMeasurementLocation.all.order(:name)
     
     if request.post?
-      model = params[:blood_pressure_measurement]
-      @measurement = BloodPressureMeasurement.new(
-        user_id: current_user.id,
-        blood_pressure_measurement_position_id: model[:blood_pressure_measurement_position_id],
-        blood_pressure_measurement_location_id: model[:blood_pressure_measurement_location_id],
-        systolic: model[:systolic],
-        diastolic: model[:diastolic],
-        pulse: model[:pulse],
-        notes: model[:notes])
-
+      @measurement = current_user.blood_pressure_measurements.new(blood_pressure_measurement_params)
       if @measurement.save
         redirect_to blood_pressure_index_path
       else
         render :new
       end
-    else
-      @measurement = BloodPressureMeasurement.new
     end
   end
+
+  private
+    def blood_pressure_measurement_params
+      params
+        .require(:blood_pressure_measurement)
+        .permit(
+          :blood_pressure_measurement_position_id,
+          :blood_pressure_measurement_location_id,
+          :systolic,
+          :diastolic,
+          :pulse,
+          :notes)
+    end
 end
