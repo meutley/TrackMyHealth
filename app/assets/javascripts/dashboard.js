@@ -1,4 +1,23 @@
-var Dashboard = Dashboard || {};
+var Dashboard = Dashboard || (function () {
+    var $newLinkTemplate = $('<a>').addClass('new-link-hover').html('<i class="fa fa-plus"></i>&nbsp;Add new...');
+    
+    var _init = () => {
+        var $cardsWithShowNew = $('.card-body.show-new-link');
+        $.each($cardsWithShowNew, (index, card) => {
+            var $card = $(card);
+            var newLink = $card.data('new-link');
+            if (newLink) {
+                var $newLinkElement = $newLinkTemplate.clone();
+                $newLinkElement.attr('href', newLink);
+                $card.append($newLinkElement);
+            }
+        });
+    }
+
+    return {
+        init: _init
+    }
+})();
 
 Dashboard.Customize = Dashboard.Customize || (function () {
     var _init = () => {
@@ -46,5 +65,5 @@ Dashboard.Customize = Dashboard.Customize || (function () {
     
     return {
         init: _init
-    };
+    }
 })();

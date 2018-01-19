@@ -1,6 +1,6 @@
 <%= render partial: 'dashboard/card_header', locals: { title: "Weight", link_path: weight_path }%>
 <% if @model.weight != nil %>
-    <div class="card-body">
+    <div class="card-body show-new-link" data-new-link="<%= weight_new_path %>">
         <%= @model.weight.value %>
         <p class="unit-label">
             <%= h current_user.weight_unit %>

@@ -1,12 +1,12 @@
 <%= render partial: 'dashboard/card_header', locals: { title: "Blood Pressure", link_path: blood_pressure_path }%>
 <% unless @model.blood_pressure.nil? %>
-    <div class="card-body">
+    <div class="card-body show-new-link" data-new-link="<%= blood_pressure_new_path %>">
         <%= blood_pressure_display(@model.blood_pressure) %>
         <p class="unit-label">
             mmHg
         </p>
         <p>
-            Pulse: <%= @model.blood_pressure.pulse %>
+            Pulse: <%= @model.blood_pressure.pulse || "N/A" %>
         </p>
     </div>
     <div class="card-footer">

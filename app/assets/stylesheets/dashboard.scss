@@ -6,6 +6,12 @@
     }
     
     .card.dashboard-card {
+        &:hover {
+            > .card-body.show-new-link > .new-link-hover {
+                display: block;
+            }
+        }
+        
         .card-header {
             background: $primary-blue-lightest;
             color: $white;
@@ -24,6 +30,7 @@
         
         .card-body {
             font-size: 48pt;
+            position: relative;
             
             &.placeholder {
                 span {
@@ -38,6 +45,25 @@
                 &.unit-label {
                     margin-top: -10px;
                     font-size: 12pt;
+                }
+            }
+
+            &.show-new-link {
+                .new-link-hover {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    display: none;
+                    padding: 2px 7px;
+                    background: $light-green;
+                    border: 1px solid $dark-green;
+                    font-size: 11pt;
+                    text-decoration: none;
+                    color: $white;
+
+                    &:hover {
+                        background: $lighter-green;
+                    }
                 }
             }
         }
