@@ -13,5 +13,5 @@
         <%= to_user_timezone_formatted(@model.blood_pressure.created_at) %>
     </div>
 <% else %>
-    <%= render partial: 'dashboard/no_data' %>
+    <%= render partial: 'dashboard/no_data', locals: { new_link: blood_pressure_new_path, is_placeholder: false } %>
 <% end %>

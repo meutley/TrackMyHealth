@@ -1,4 +1,4 @@
-<div class="card-body <%= " placeholder" if defined?(is_placeholder) && is_placeholder == true %>">
+<div class="card-body<%= card_classes(new_link, is_placeholder) %>"<%= card_data_attributes(new_link) %>>
     <span class="text-danger">No data</span>
 </div>
 <div class="card-footer">

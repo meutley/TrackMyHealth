@@ -13,6 +13,18 @@ module DashboardHelper
         
         return link
     end
+    
+    def card_classes(new_link, is_placeholder)
+        out = ""
+        out = " show-new-link" unless !defined?(new_link) || new_link.nil?
+        out += " placeholder" unless !defined?(is_placeholder) || is_placeholder == false
+        return out
+    end
+    
+    def card_data_attributes(new_link)
+        out = " data-new-link=#{new_link}" unless !defined?(new_link) || new_link.nil?
+        return out
+    end
 
     def get_ordered_module_rows(modules)
         result = Array.new
