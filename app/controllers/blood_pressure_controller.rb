@@ -13,7 +13,7 @@ class BloodPressureController < ApplicationController
     if request.post?
       @measurement = current_user.blood_pressure_measurements.new(blood_pressure_measurement_params)
       if @measurement.save
-        redirect_to blood_pressure_index_path
+        redirect_to blood_pressure_path
       else
         render :new
       end

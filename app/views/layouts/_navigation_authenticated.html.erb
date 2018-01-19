@@ -1,8 +1,14 @@
 <li class="nav-item">
     <a class="nav-link" href="<%= dashboard_path %>"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
 </li>
-<li class="nav-item">
-    <a class="nav-link" href="<%= blood_pressure_path %>"><i class="fa fa-heart"></i>&nbsp;Blood Pressure</a>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarMyHealthDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-heartbeat"></i>&nbsp;My Health
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarMyHealthDropdown">
+        <a class="dropdown-item" href="<%= blood_pressure_path %>"><i class="fa fa-heart"></i>&nbsp;Blood Pressure</a>
+        <a class="dropdown-item" href="<%= weight_path %>"><i class="fa fa-balance-scale"></i>&nbsp;Weight</a>
+    </div>
 </li>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

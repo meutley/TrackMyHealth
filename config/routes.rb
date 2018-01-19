@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'weight/index'
+
   devise_for :users, path: 'users',
     controllers: { registrations: 'users/registrations' },
     path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   get 'blood_pressure/view'
   
   get 'weight', to: 'weight#index'
+  get 'weight/new'
+  post 'weight/new'
 
   get 'dashboard', to: 'dashboard#index'
   get 'dashboard/index'

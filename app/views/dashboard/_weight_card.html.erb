@@ -1,4 +1,4 @@
-<%= render partial: 'dashboard/card_header', locals: { title: "Weight", link_path: weight_path, id: @model.weight&.id }%>
+<%= render partial: 'dashboard/card_header', locals: { title: "Weight", link_path: weight_path }%>
 <% if @model.weight != nil %>
     <div class="card-body">
         <%= @model.weight.value %>
