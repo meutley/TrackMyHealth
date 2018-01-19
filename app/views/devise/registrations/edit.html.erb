@@ -59,14 +59,17 @@
                   <div class="form-group field">
                     <div class="col-sm-12">
                       <%= f.label "Weight Unit" %>
-                      <%= select_tag "weight_unit", options_for_select(["lbs", "kg"]), { :class => "form-control" } %>
+                      <%= f.select :weight_unit, nil, { :selected => resource.weight_unit }, { :class => "form-control" } do %>
+                        <%= content_tag(:option, "lbs", value: "lbs", selected: resource.weight_unit == "lbs") %>
+                        <%= content_tag(:option, "kg", value: "kg", selected: resource.weight_unit == "kg") %>
+                      <% end %>
                     </div>
                   </div>
 
                   <div class="form-group field">
                     <div class="col-sm-12">
                       <%= f.label "Blood Glucose Unit" %>
-                      <%= select_tag "blood_glucose_unit", options_for_select(["mg/dL", "mmol/L"]), { :class => "form-control" } %>
+                      <%= f.select :blood_glucose_unit, options_for_select(["mg/dL", "mmol/L"]), {}, { :class => "form-control" } %>
                     </div>
                   </div>
                 </div>
