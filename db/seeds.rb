@@ -8,3 +8,4 @@ BloodPressureMeasurementLocation.create(name: 'Right Arm')
 
 # Dashboard
 DashboardModule.create(name: 'Blood Pressure')
+DashboardModule.create(name: 'Weight')

@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
   
   def index
     @model = DashboardViewModel.new(
-      BloodPressureMeasurement.most_recent_for_user(current_user.id),
+      BloodPressureMeasurement.most_recent_for_user(current_user.id).first,
       nil)
 
     @module_rows = get_ordered_module_rows(DashboardModule.active_for_user(current_user.id).reverse).sort_by {|m| m.length}

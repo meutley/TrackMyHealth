@@ -1,5 +1,5 @@
 <%= render partial: 'dashboard/card_header', locals: { title: "Blood Pressure", link_path: blood_pressure_path }%>
-<% if !@model.blood_pressure.nil? %>
+<% unless @model.blood_pressure.nil? %>
     <div class="card-body">
         <%= blood_pressure_display(@model.blood_pressure) %>
         <p class="unit-label">
