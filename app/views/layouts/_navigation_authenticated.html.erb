@@ -10,12 +10,14 @@
         <a class="dropdown-item" href="<%= weight_path %>"><i class="fa fa-balance-scale"></i>&nbsp;Weight</a>
     </div>
 </li>
+<li class="nav-item">
+    <a class="nav-link" href="<%= dashboard_path %>"><i class="fa fa-bar-chart"></i>&nbsp;Analytics</a>
+</li>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-user"></i>&nbsp;<%= current_user.email %>
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
-        <%= link_to "Edit Profile", users_profile_path, :class => "dropdown-item" %>
         <%= link_to "My Account", edit_user_registration_path, :class => "dropdown-item" %>
         <%= link_to destroy_user_session_path, :method => :delete, :class => "dropdown-item" do %>
             <i class="fa fa-sign-out"></i>&nbsp;Log Out

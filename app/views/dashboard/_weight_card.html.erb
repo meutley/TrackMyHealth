@@ -3,7 +3,7 @@
     <div class="card-body">
         <%= @model.weight.value %>
         <p class="unit-label">
-            lbs
+            <%= h current_user.weight_unit %>
         </p>
     </div>
     <div class="card-footer">

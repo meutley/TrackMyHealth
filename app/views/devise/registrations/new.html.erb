@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <div class="card signup-card">
         <div class="card-header">
           <h2>Sign Up</h2>
@@ -11,47 +11,87 @@
               <%= devise_error_messages! %>
             </div>
 
-            <div class="form-group field">
-              <div class="col-sm-12">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-5">
+                  <h3>Account Details</h3>
+                
+                  <div class="form-group field">
+                    <div class="col-sm-12">
+                      <%= f.label :email %><br />
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                    </div>
+                  </div>
+
+                  <div class="form-group field">
+                    <div class="col-sm-12">
+                      <%= f.label :password %>
+                      <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                      <% end %><br />
+                      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                    </div>
+                  </div>
+
+                  <div class="form-group field">
+                    <div class="col-sm-12">
+                      <%= f.label :password_confirmation %><br />
+                      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-5 offset-sm-1">
+                  <h3>Preferences</h3>
+
+                  <div class="form-group field">
+                    <div class="col-sm-12">
+                      <%= f.label :timezone %><br />
+                      <%= f.time_zone_select :timezone, nil, {}, { :class => "form-control" } %>
+                    </div>
+                  </div>
+
+                  <div class="form-group field">
+                    <div class="col-sm-12">
+                      <%= f.label "Weight Unit" %>
+                      <%= select_tag "weight_unit", options_for_select(["lbs", "kg"]), { :class => "form-control" } %>
+                    </div>
+                  </div>
+
+                  <div class="form-group field">
+                    <div class="col-sm-12">
+                      <%= f.label "Blood Glucose Unit" %>
+                      <%= select_tag "blood_glucose_unit", options_for_select(["mg/dL", "mmol/L"]), { :class => "form-control" } %>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="form-group field">
-              <div class="col-sm-12">
-                <%= f.label :password %>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
-                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            <div class="col-sm-12">
+              <div class="form-group field">
+                <div class="col-sm-12">
+                  <hr/>
+                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "off", class: "form-control col-sm-3" %>
+                </div>
               </div>
             </div>
 
-            <div class="form-group field">
-              <div class="col-sm-12">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group field">
-              <div class="col-sm-12">
-                <%= f.label :timezone %><br />
-                <%= f.time_zone_select :timezone, nil, {}, { :class => "form-control" } %>
-              </div>
-            </div>
-
-            <div class="form-group actions">
-              <div class="col-sm-12">
-                <%= f.submit "Sign up", class: "btn btn-primary" %>
+            <div class="col-sm-12">
+              <div class="form-group actions">
+                <div class="col-sm-12">
+                  <%= f.submit "Sign Up", class: "btn btn-primary" %>
+                </div>
               </div>
             </div>
           <% end %>
 
-          <div class="form-group">
-            <div class="col-sm-12">
-              <%= render "devise/shared/links" %>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <%= render "devise/shared/links" %>
+              </div>
             </div>
           </div>
         </div>

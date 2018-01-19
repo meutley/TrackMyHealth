@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :dashboard_modules, through: :user_active_dashboard_modules
 
   validates :timezone, presence: true
+  validates :weight_unit, presence: true
+  validates :blood_glucose_unit, presence: true
 end

@@ -16,27 +16,29 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <h1>New Weight Measurement</h1>
             <%= form_for @measurement, url: { action: "new" }, html: { class: "form" } do |f| %>
-                <div class="form-group row">
-                    <%= f.label(:value, "Value", class: "col-sm-1 control-label") %>
-                    <div class="col-sm-2">
-                        <%= f.text_field(:value, class: "form-control") %>
+                <fieldset>
+                    <legend>New Weight Measurement</legend>
+                    <div class="form-group row">
+                        <%= f.label(:value, "Value", class: "col-sm-1 control-label") %>
+                        <div class="col-sm-2">
+                            <%= f.text_field(:value, class: "form-control") %>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <%= label_tag(:notes, "Notes", class: "col-sm-4 control-label") %>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-6">
-                        <%= f.text_area(:notes, size: "15x4", class: "form-control") %>
+                    <div class="form-group row">
+                        <%= label_tag(:notes, "Notes", class: "col-sm-4 control-label") %>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-12">
-                        <%= f.submit("Save", class: "btn btn-primary") %>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <%= f.text_area(:notes, size: "15x4", class: "form-control") %>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <%= f.submit("Save", class: "btn btn-primary") %>
+                        </div>
+                    </div>
+                </fieldset>
             <% end %>
         </div>
     </div>

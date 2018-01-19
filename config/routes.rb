@@ -23,11 +23,6 @@ Rails.application.routes.draw do
   get 'dashboard/customize'
   post 'dashboard/customize'
 
-  devise_scope :user do
-    get 'users/profile' => 'users/registrations#profile'
-    post 'users/profile' => 'users/registrations#profile'
-  end
-
   authenticated :user do
     root :to => 'dashboard#index', as: :authenticated_root
   end
