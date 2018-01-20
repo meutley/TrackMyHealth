@@ -1,0 +1,29 @@
+class AnalyticsController < ApplicationController
+  before_action :authenticate_user!
+  
+  def index
+  end
+
+  def blood_pressure
+  end
+
+  def weight
+  end
+
+  # GET analytics/blood_pressure/trends
+  def blood_pressure_data
+    @measurements = current_user.blood_pressure_measurements.order(created_at: :desc).limit(10)
+    results = Array.new
+    @measurements.each do |m|
+      results.push(
+        BloodPressureAnalyticsViewmodel.new(
+          m.systolic,
+          m.diastolic,
+          m.created_at.in_time_zone(current_user.timezone).strftime("%-m/%-d/%Y %I:%M %p")))
+    end
+
+    respond_to do |format|
+      format.json { render :json => { :blood_pressure_measurements => results } }
+    end
+  end
+end
