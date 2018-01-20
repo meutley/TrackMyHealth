@@ -1,7 +1,7 @@
 class BloodPressureMeasurement < ApplicationRecord
     has_one :user
-    has_one :blood_pressure_measurement_position
-    has_one :blood_pressure_measurement_location
+    belongs_to :blood_pressure_measurement_position
+    belongs_to :blood_pressure_measurement_location
 
     scope :most_recent_for_user, ->(user_id) { where(user_id: user_id).order(created_at: :desc) }
 

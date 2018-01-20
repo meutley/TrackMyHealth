@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119005537) do
+ActiveRecord::Schema.define(version: 20180119023547) do
+
+  create_table "blood_glucose_units", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "blood_pressure_measurement_locations", force: :cascade do |t|
     t.string "name"
@@ -75,6 +81,12 @@ ActiveRecord::Schema.define(version: 20180119005537) do
     t.integer "user_id"
     t.decimal "value"
     t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weight_units", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

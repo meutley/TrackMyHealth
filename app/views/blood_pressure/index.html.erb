@@ -13,7 +13,8 @@
                         <tr>
                             <th>Measurement (mmHg)</th>
                             <th>Pulse</th>
-                            <th>Notes</th>
+                            <th>Position</th>
+                            <th>Location</th>
                             <th>Date/Time</th>
                         </tr>
                     </thead>
@@ -22,7 +23,8 @@
                             <tr>
                                 <td><%= "#{m.systolic}/#{m.diastolic}" %></td>
                                 <td><%= m.pulse %></td>
-                                <td><%= m.notes %></td>
+                                <td><%= m.blood_pressure_measurement_position.name %></td>
+                                <td><%= m.blood_pressure_measurement_location.name %></td>
                                 <td><%= to_user_timezone_formatted(m.created_at) %></td>
                             </tr>
                         <% end %>

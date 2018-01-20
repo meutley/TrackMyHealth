@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'blood_pressure/index'
   get 'blood_pressure/new'
   post 'blood_pressure/new'
-  get 'blood_pressure/view'
+  get 'blood_pressure/edit/:id', to: 'blood_pressure#edit'
+  patch 'blood_pressure/edit/:id', to: 'blood_pressure#edit'
   
   get 'weight', to: 'weight#index'
   get 'weight/new'
