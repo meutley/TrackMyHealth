@@ -6,6 +6,7 @@ nav.navbar.bg-light {
     margin: 0 0 16px 0;
     padding: 0;
     background: $primary-blue !important;
+    font-family: $basic-font;
 
     .dropdown-menu {
         background: $primary-blue;
@@ -15,6 +16,7 @@ nav.navbar.bg-light {
         color: $white;
         text-decoration: none;
         padding: 16px 35px;
+        font-size: 11pt;
         
         &:hover {
             color: $white;
@@ -35,6 +37,7 @@ nav.navbar.bg-light {
     .dropdown-menu {
         a.dropdown-item {
             color: $white;
+            font-size: 11pt;
 
             &:hover {
                 background: $navbar-link-hover-background;
