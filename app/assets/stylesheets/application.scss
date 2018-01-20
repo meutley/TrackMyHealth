@@ -16,3 +16,19 @@
 
 @import "bootstrap";
 @import "font-awesome";
+
+@import "theme";
+
+html, body {
+    font-family: $primary-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $header-font;
+}
+
+span {
+    &.date-time-stamp {
+        font-family: $secondary-font;
+    }
+}
