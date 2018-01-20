@@ -1,6 +1,4 @@
 module DashboardHelper
-    NUMBER_OF_CARDS_PER_ROW = 3
-    
     def blood_pressure_display(blood_pressure_measurement)
         return "#{blood_pressure_measurement.systolic}/#{blood_pressure_measurement.diastolic}"
     end
@@ -24,25 +22,6 @@ module DashboardHelper
     def card_data_attributes(new_link)
         out = " data-new-link=#{new_link}" unless !defined?(new_link) || new_link.nil?
         return out
-    end
-
-    def get_ordered_module_rows(modules)
-        result = Array.new
-        return result if modules.nil? || modules.length == 0
-
-        modules_row = Array.new
-        i = 0
-        while i < modules.length
-            modules_row.push(modules[i])
-            i += 1
-            
-            if (i >= modules.length || i % NUMBER_OF_CARDS_PER_ROW == 0)
-                result.push(modules_row.reverse)
-                modules_row = Array.new
-            end
-        end
-
-        return result
     end
     
     def render_dashboard_module_card(dashboard_module, model)

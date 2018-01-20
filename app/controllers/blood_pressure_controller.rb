@@ -2,7 +2,7 @@ class BloodPressureController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @measurements = BloodPressureMeasurement.where(user_id: current_user.id)
+    @measurements = BloodPressureMeasurement.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def new

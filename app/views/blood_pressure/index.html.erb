@@ -5,12 +5,31 @@
                 <h2>No blood pressure measurements</h2>
                 <a href="<%= blood_pressure_new_path %>">New Entry</a>
             <% else %>
-            <h2>Blood pressure measurements</h2>
-            <ul>
-                <% @measurements.each do |m| %>
-                <li><%= m.systolic %> / <%= m.diastolic %></li>
-                <% end %>
-            </ul>
+                <h2>Blood pressure measurements</h2>
+                <a href="<%= blood_pressure_new_path %>">New Entry</a>
+                <br/><br/>
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>Systolic</th>
+                            <th>Diastolic</th>
+                            <th>Pulse</th>
+                            <th>Notes</th>
+                            <th>Date/Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @measurements.each do |m| %>
+                            <tr>
+                                <td><%= m.systolic %></td>
+                                <td><%= m.diastolic %></td>
+                                <td><%= m.pulse %></td>
+                                <td><%= m.notes %></td>
+                                <td><%= to_user_timezone_formatted(m.created_at) %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
             <% end %>
         </div>
     </div>
