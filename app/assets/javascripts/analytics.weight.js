@@ -37,14 +37,15 @@ Analytics.Weight = Analytics.Weight || (function () {
                     label: 'Weight (' + unit + ')',
                     data: weights.map(m => m.value),
                     borderColor: lineColor,
-                    fill: '#000'
+                    fill: '#000',
+                    lineTension: 0
                 }]
             },
             options: {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero: false
                         }
                     }]
                 }

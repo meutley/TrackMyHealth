@@ -46,7 +46,7 @@ Analytics.BloodPressure = Analytics.BloodPressure || (function () {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero: true
                         }
                     }]
                 }
