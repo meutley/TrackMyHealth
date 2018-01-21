@@ -11,13 +11,17 @@ Analytics.BloodPressure = Analytics.BloodPressure || (function () {
             method: 'GET'
         }).then((res) => {
             var data = res.blood_pressure_measurements;
-            _buildPressureTrendsChart(data.map((m) => {
-                return {
-                    date: m.datetime,
-                    systolic: m.systolic,
-                    diastolic: m.diastolic
-                }
-            }));
+            if (data.length === 0) {
+                Analytics.toggleNoDataMessage(true);
+            } else {
+                _buildPressureTrendsChart(data.map((m) => {
+                    return {
+                        date: m.datetime,
+                        systolic: m.systolic,
+                        diastolic: m.diastolic
+                    }
+                }));
+            }
         });
     }
 

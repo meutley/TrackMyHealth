@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   # Analytics API
   get 'analytics/blood_pressure_data'
+  get 'analytics/weight_data'
 
   authenticated :user do
     root :to => 'dashboard#index', as: :authenticated_root
