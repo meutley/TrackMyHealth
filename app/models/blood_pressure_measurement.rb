@@ -11,4 +11,5 @@ class BloodPressureMeasurement < ApplicationRecord
     validates :systolic, presence: true, numericality: { only_integer: true }
     validates :diastolic, presence: true, numericality: { only_integer: true }
     validates :pulse, numericality: { only_integer: true }, allow_nil: true
+    validates :taken_at, presence: true
 end

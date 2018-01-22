@@ -48,6 +48,7 @@ class BloodPressureController < ApplicationController
           :systolic,
           :diastolic,
           :pulse,
-          :notes)
+          :notes,
+          :taken_at)
     end
 end

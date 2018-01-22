@@ -1,2 +1,11 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+var BloodPressure = BloodPressure || {};
+
+BloodPressure.NewEntry = BloodPressure.NewEntry || (function () {
+    var _init = () => {
+        Application.Common.setupDateTimePickers();
+    }
+
+    return {
+        init: _init
+    }
+})();

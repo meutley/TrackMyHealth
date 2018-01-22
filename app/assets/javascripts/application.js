@@ -15,4 +15,36 @@
 //= require jquery3
 //= require bootstrap
 //= require Chart.2.7.1.min
+//= require moment.min
+//= require tempusdominus-bootstrap-4.min
 //= require_tree .
+
+var Application = Application || {};
+
+Application.Common = Application.Common || (function () {
+    var _setupDateTimePickers = () => {
+        $('.date-time-picker').datetimepicker({
+            format: 'YYYY-MM-d'
+        });
+
+        $('.date-time-picker').on('keypress', (e) => {
+            e.preventDefault();
+        });
+
+        $('.date-time-picker').focus(function () {
+            $(this).blur();
+        });
+
+        $('.input-group.date > .input-group-append[data-clear="datetimepicker"]').on('click', function () {
+            var dataTarget = $(this).data('target');
+            var $target = $(dataTarget).find('input[type=text]');
+            if ($target.length > 0) {
+                $target.val('');
+            }
+        });
+    }
+
+    return {
+        setupDateTimePickers: _setupDateTimePickers
+    }
+})();
