@@ -50,6 +50,20 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <%= f.label(:taken_at, "Taken At", class: "col-sm-1 control-label") %>
+                        <div class="col-sm-3">
+                            <div class="input-group date" id="taken-at" data-target-input="nearest">
+                                <%= f.text_field(:taken_at, class: "form-control date-time-picker", data: { :target => "#taken-at" }, value: to_user_timezone_formatted(@measurement.taken_at)) %>
+                                <div class="input-group-append" data-target="#taken-at" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <div class="input-group-append" data-target="#taken-at" data-clear="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-times"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <%= label_tag(:notes, "Notes", class: "col-sm-4 control-label") %>
                     </div>
                     <div class="form-group row">
@@ -69,3 +83,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).on('turbolinks:load', () => {
+        BloodPressure.EditEntry.init();
+    });
+</script>

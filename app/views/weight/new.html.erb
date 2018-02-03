@@ -18,7 +18,7 @@
         <div class="col-sm-12">
             <%= form_for @measurement, url: { action: "new" }, html: { class: "form" } do |f| %>
                 <fieldset>
-                    <legend>New Weight Measurement</legend>
+                    <legend>New Weight Measurement (<%= current_user.weight_unit %>)</legend>
                     <div class="form-group row">
                         <%= f.label(:value, "Value", class: "col-sm-1 control-label") %>
                         <div class="col-sm-2">

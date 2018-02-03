@@ -23,9 +23,7 @@ var Application = Application || {};
 
 Application.Common = Application.Common || (function () {
     var _setupDateTimePickers = () => {
-        $('.date-time-picker').datetimepicker({
-            format: 'YYYY-MM-d'
-        });
+        $('.date-time-picker').datetimepicker();
 
         $('.date-time-picker').on('keypress', (e) => {
             e.preventDefault();
