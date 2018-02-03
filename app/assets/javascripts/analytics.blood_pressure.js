@@ -1,18 +1,33 @@
 var Analytics = Analytics || {};
 
 Analytics.BloodPressure = Analytics.BloodPressure || (function () {
-    var okayBackgroundColor = '#33ff11';
-    var warningBackgroundColor = '#ffdd22';
-    var dangerBackgroundColor = '#ff2233';
+    const lineChartBorderColor = '#888';
+    const okayBackgroundColor = '#33ff11';
+    const warningBackgroundColor = '#ffdd22';
+    const dangerBackgroundColor = '#ff2233';
+    
+    const defaultChartType = 'bar';
     
     var _init = () => {
+        this.chartType = defaultChartType;
+
         _buildChart();
 
         $('#btn-refresh-chart').off('click');
         $('#btn-refresh-chart').on('click', () => _buildChart());
+
+        $('#chart-type-list').off('change');
+        $('#chart-type-list').on('change', () => {
+            const value = $('#chart-type-list').find('option:selected').val();
+            this.chartType = value;
+            _buildChart();
+        });
     }
 
     var _buildChart = () => {
+        $('#pressure-trends').hide();
+        $('#loading-indicator').show();
+        
         $.ajax({
             url: '/analytics/blood_pressure_data',
             method: 'GET'
@@ -21,7 +36,7 @@ Analytics.BloodPressure = Analytics.BloodPressure || (function () {
             if (data.length === 0) {
                 Analytics.toggleNoDataMessage(true);
             } else {
-                _buildPressureTrendsChart(data.map((m) => {
+                _buildPressureTrendsChart(this.chartType, data.map((m) => {
                     return {
                         date: m.datetime,
                         systolic: m.systolic,
@@ -29,24 +44,35 @@ Analytics.BloodPressure = Analytics.BloodPressure || (function () {
                     }
                 }));
             }
+        }).always(() => {
+            $('#loading-indicator').hide();
+            $('#pressure-trends').show();
         });
     };
 
-    var _buildPressureTrendsChart = (systolicMeasurements) => {
+    var _buildPressureTrendsChart = (chartType, measurements) => {
         var ctx = document.getElementById("pressure-trends").getContext('2d');
-        var pressureTrendsChart = new Chart(ctx, {
-            type: 'bar',
+        if (this.pressureTrendsChart) {
+            this.pressureTrendsChart.destroy();
+        }
+        
+        this.pressureTrendsChart = new Chart(ctx, {
+            type: chartType,
             data: {
-                labels: systolicMeasurements.map(m => m.date),
+                labels: measurements.map(m => m.date),
                 // Stack systolic and diastolic together (side by side)
                 datasets: [{
                     label: 'Systolic Pressure',
-                    data: systolicMeasurements.map(m => m.systolic),
-                    borderWidth: 1
+                    data: measurements.map(m => m.systolic),
+                    borderWidth: 1,
+                    lineTension: 0,
+                    fill: ''
                 }, {
                     label: 'Diastolic Pressure',
-                    data: systolicMeasurements.map(m => m.diastolic),
-                    borderWidth: 1
+                    data: measurements.map(m => m.diastolic),
+                    borderWidth: 1,
+                    lineTension: 0,
+                    fill: ''
                 }]
             },
             options: {
@@ -62,16 +88,20 @@ Analytics.BloodPressure = Analytics.BloodPressure || (function () {
 
         // Set background colors based on danger/warning zones
         var datasets = pressureTrendsChart.data.datasets;
-        _setPressureTrendsBackgroundColors(pressureTrendsChart, datasets[0], 140, 130);
-        _setPressureTrendsBackgroundColors(pressureTrendsChart, datasets[1], 90, 85);
+        _setPressureTrendsBackgroundColors(pressureTrendsChart, chartType, datasets[0], 140, 130);
+        _setPressureTrendsBackgroundColors(pressureTrendsChart, chartType, datasets[1], 90, 85);
     }
 
-    var _setPressureTrendsBackgroundColors = (chart, dataset, danger, warning, okay) => {
+    var _setPressureTrendsBackgroundColors = (chart, chartType, dataset, danger, warning, okay) => {
         var backgroundColors = [];
         $.each(dataset.data, (index, d) => {
             backgroundColors.push(_getSeverityColor(d, danger, warning, okay));
         });
+
+        const isLineChart = chartType === 'line';
         dataset.backgroundColor = backgroundColors;
+        dataset.pointBackgroundColor = dataset.pointBorderColor = isLineChart ? backgroundColors : '';
+        dataset.borderColor = isLineChart ? lineChartBorderColor : '';
         chart.update();
     }
 
