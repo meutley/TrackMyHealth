@@ -9,14 +9,15 @@ class BloodPressureController < ApplicationController
   end
 
   def new
-    Time.zone = current_user.timezone
     @measurement = BloodPressureMeasurement.new
     @positions = BloodPressureMeasurementPosition.all.order(:name)
     @locations = BloodPressureMeasurementLocation.all.order(:name)
     
     if request.post?
       @measurement = current_user.blood_pressure_measurements.new(blood_pressure_measurement_params)
+      @measurement.taken_at = convert_date_time_format(params[:blood_pressure_measurement][:taken_at])
       if @measurement.save
+        flash[:message] = "The blood pressure measurement was created successfully."
         redirect_to blood_pressure_path
       else
         render :new
@@ -25,19 +26,26 @@ class BloodPressureController < ApplicationController
   end
 
   def edit
-    Time.zone = current_user.timezone
     @measurement = current_user.blood_pressure_measurements.find(params[:id])
     @positions = BloodPressureMeasurementPosition.all.order(:name)
     @locations = BloodPressureMeasurementLocation.all.order(:name)
 
     if request.patch?
       @measurement.assign_attributes(blood_pressure_measurement_params)
+      @measurement.taken_at = convert_date_time_format(params[:blood_pressure_measurement][:taken_at])
       if @measurement.save
+        flash[:message] = "The blood pressure measurement was saved successfully."
         redirect_to blood_pressure_path
       else
         render :edit
       end
     end
+  end
+
+  def delete
+    current_user.blood_pressure_measurements.destroy(params[:id])
+    flash[:message] = "The blood pressure measurement was deleted successfully."
+    redirect_to blood_pressure_path
   end
 
   private

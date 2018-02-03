@@ -16,9 +16,9 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <%= form_for @measurement, url: { action: "new" }, html: { class: "form" } do |f| %>
+            <%= form_for @measurement, url: { action: "edit" }, html: { class: "form" } do |f| %>
                 <fieldset>
-                    <legend>New Weight Measurement (<%= current_user.weight_unit %>)</legend>
+                    <legend>Edit Weight Measurement (<%= current_user.weight_unit %>)</legend>
                     <div class="form-group row">
                         <%= f.label(:value, "Value", class: "col-sm-1 control-label") %>
                         <div class="col-sm-2">
@@ -29,7 +29,7 @@
                         <%= f.label(:taken_at, "Taken At", class: "col-sm-1 control-label") %>
                         <div class="col-sm-3">
                             <div class="input-group date" id="taken-at" data-target-input="nearest">
-                                <%= f.text_field(:taken_at, class: "form-control date-time-picker", data: { :target => "#taken-at" }) %>
+                                <%= f.text_field(:taken_at, class: "form-control date-time-picker", data: { :target => "#taken-at" }, value: to_user_timezone_formatted(@measurement.taken_at)) %>
                                 <div class="input-group-append" data-target="#taken-at" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
@@ -62,6 +62,6 @@
 
 <script type="text/javascript">
     $(document).on('turbolinks:load', () => {
-        Weight.NewEntry.init();
+        Weight.EditEntry.init();
     });
 </script>

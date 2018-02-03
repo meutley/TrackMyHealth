@@ -23,7 +23,9 @@ var Application = Application || {};
 
 Application.Common = Application.Common || (function () {
     var _setupDateTimePickers = () => {
-        $('.date-time-picker').datetimepicker();
+        $('.date-time-picker').datetimepicker({
+            format: 'MM/D/YYYY hh:mm A'
+        });
 
         $('.date-time-picker').on('keypress', (e) => {
             e.preventDefault();
@@ -44,5 +46,18 @@ Application.Common = Application.Common || (function () {
 
     return {
         setupDateTimePickers: _setupDateTimePickers
+    }
+})();
+
+Application.ActionLinks = Application.ActionLinks || (function () {
+    var _init = () => {
+        $('.btn-delete').off('click');
+        $('.btn-delete').on('click', function (event) {
+            return confirm('Are you sure you want to delete this record?');
+        });
+    }
+
+    return {
+        init: _init
     }
 })();
