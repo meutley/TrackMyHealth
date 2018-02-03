@@ -5,7 +5,7 @@ class BloodPressureController < ApplicationController
     @measurements = current_user.blood_pressure_measurements
       .joins(:blood_pressure_measurement_position, :blood_pressure_measurement_location)
       .includes(:blood_pressure_measurement_position, :blood_pressure_measurement_location)
-      .order(created_at: :desc)
+      .order(taken_at: :desc)
   end
 
   def new
