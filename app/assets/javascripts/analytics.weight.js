@@ -9,7 +9,7 @@ Analytics.Weight = Analytics.Weight || (function () {
             method: 'GET'
         }).then((res) => {
             var model = res.model;
-            var data = model.weight_measurements;
+            var data = model ? model.weight_measurements : [];
             if (data.length === 0) {
                 Analytics.toggleNoDataMessage(true);
             } else {

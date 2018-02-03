@@ -17,6 +17,9 @@
 //= require Chart.2.7.1.min
 //= require moment.min
 //= require tempusdominus-bootstrap-4.min
+//= require analytics
+//= require analytics.blood_pressure
+//= require analytics.weight
 //= require_tree .
 
 var Application = Application || {};

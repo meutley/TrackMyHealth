@@ -31,17 +31,19 @@ class AnalyticsController < ApplicationController
   def weight_data
     @weights = current_user.weight_measurements.order(created_at: :desc).limit(10)
 
-    model = WeightAnalyticsViewmodel.new
-    model.unit = current_user.weight_unit
-    model.min = @weights.minimum(:value)
-    model.max = @weights.maximum(:value)
-    model.average = @weights.average(:value).round(1)
+    if @weights.length > 0
+      model = WeightAnalyticsViewmodel.new
+      model.unit = current_user.weight_unit
+      model.min = @weights.minimum(:value)
+      model.max = @weights.maximum(:value)
+      model.average = @weights.average(:value).round(1)
 
-    @weights.each do |w|
-      model.weight_measurements.push(
-        WeightAnalyticsMeasurementViewmodel.new(
-          w.value,
-          w.created_at.in_time_zone(current_user.timezone).strftime("%-m/%-d/%Y %I:%M %p")))
+      @weights.each do |w|
+        model.weight_measurements.push(
+          WeightAnalyticsMeasurementViewmodel.new(
+            w.value,
+            w.created_at.in_time_zone(current_user.timezone).strftime("%-m/%-d/%Y %I:%M %p")))
+      end
     end
 
     respond_to do |format|
