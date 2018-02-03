@@ -25,7 +25,7 @@
                                 <td><%= m.pulse %></td>
                                 <td><%= m.blood_pressure_measurement_position.name %></td>
                                 <td><%= m.blood_pressure_measurement_location.name %></td>
-                                <td><%= to_user_timezone_formatted(m.created_at) %></td>
+                                <td><%= to_user_timezone_formatted(m.taken_at) %></td>
                             </tr>
                         <% end %>
                     </tbody>

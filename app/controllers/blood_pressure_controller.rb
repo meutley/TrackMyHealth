@@ -14,6 +14,7 @@ class BloodPressureController < ApplicationController
     @locations = BloodPressureMeasurementLocation.all.order(:name)
     
     if request.post?
+      Time.zone = current_user.timezone
       @measurement = current_user.blood_pressure_measurements.new(blood_pressure_measurement_params)
       if @measurement.save
         redirect_to blood_pressure_path
@@ -29,6 +30,7 @@ class BloodPressureController < ApplicationController
     @locations = BloodPressureMeasurementLocation.all.order(:name)
 
     if request.patch?
+      Time.zone = current_user.timezone
       @measurement.assign_attributes(blood_pressure_measurement_params)
       if @measurement.save
         redirect_to blood_pressure_path
