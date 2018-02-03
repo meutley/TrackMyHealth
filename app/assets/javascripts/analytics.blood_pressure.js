@@ -6,6 +6,13 @@ Analytics.BloodPressure = Analytics.BloodPressure || (function () {
     var dangerBackgroundColor = '#ff2233';
     
     var _init = () => {
+        _buildChart();
+
+        $('#btn-refresh-chart').off('click');
+        $('#btn-refresh-chart').on('click', () => _buildChart());
+    }
+
+    var _buildChart = () => {
         $.ajax({
             url: '/analytics/blood_pressure_data',
             method: 'GET'
@@ -23,7 +30,7 @@ Analytics.BloodPressure = Analytics.BloodPressure || (function () {
                 }));
             }
         });
-    }
+    };
 
     var _buildPressureTrendsChart = (systolicMeasurements) => {
         var ctx = document.getElementById("pressure-trends").getContext('2d');
