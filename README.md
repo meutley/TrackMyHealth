@@ -41,3 +41,11 @@ I have yet to resolve an issue regarding the bcrypt gem. If you receive an error
 `gem uninstall bcrypt-ruby`
 
 `gem install bcrypt --platform=ruby`.
+
+---
+
+## Features
+
+### Track Blood Pressure
+
+![Track Blood Pressure](/../screenshots/screenshots/EditBloodPressure.png?raw=true "Track Blood Pressure")
