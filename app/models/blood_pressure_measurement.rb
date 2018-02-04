@@ -3,7 +3,7 @@ class BloodPressureMeasurement < ApplicationRecord
     belongs_to :blood_pressure_measurement_position
     belongs_to :blood_pressure_measurement_location
 
-    scope :most_recent_for_user, ->(user_id) { where(user_id: user_id).order(created_at: :desc) }
+    scope :most_recent_for_user, ->(user_id) { where(user_id: user_id).order(taken_at: :desc) }
 
     validates :user_id, presence: true, numericality: { only_integer: true }
     validates :blood_pressure_measurement_position_id, numericality: { only_integer: true }
