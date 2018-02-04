@@ -3,13 +3,6 @@
         <div class="col-sm-12">
             <fieldset>
                 <legend>Edit Weight Measurement (<%= current_user.weight_unit %>)</legend>
-                <% if @measurement.errors && @measurement.errors.any? %>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <%= render partial: 'layouts/form_errors', locals: { errors: @measurement.errors, entity_name: 'measurement' } %>
-                        </div>
-                    </div>
-                <% end %>
                 <%= render partial: 'weight/weight_form', locals: { measurement: @measurement, form_action: 'edit' } %>
             </fieldset>
         </div>

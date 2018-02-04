@@ -3,13 +3,6 @@
         <div class="col-sm-12">
             <fieldset>
                 <legend>Edit Blood Pressure Measurement</legend>
-                <% if @measurement.errors && @measurement.errors.any? %>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <%= render partial: 'layouts/form_errors', locals: { errors: @measurement.errors, entity_name: 'measurement' } %>
-                        </div>
-                    </div>
-                <% end %>
                 <%= render partial: 'blood_pressure/blood_pressure_form', locals: { measurement: @measurement, form_action: 'edit' } %>
             </fieldset>
         </div>

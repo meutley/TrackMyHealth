@@ -1,3 +1,10 @@
+<% if measurement.errors && measurement.errors.any? %>
+    <div class="row">
+        <div class="col-sm-12">
+            <%= render partial: 'common/form_errors', locals: { errors: measurement.errors, entity_name: 'measurement' } %>
+        </div>
+    </div>
+<% end %>
 <%= form_for @measurement, url: { action: "edit" }, html: { class: "form" } do |f| %>
     <div class="form-group row">
         <%= f.label(:blood_pressure_measurement_position_id, "Position", class: "col-sm-1 control-label") %>
