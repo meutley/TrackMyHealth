@@ -49,6 +49,9 @@ Dashboard.Customize = Dashboard.Customize || (function () {
             $.ajax({
                 url: formAction,
                 method: formMethod,
+                beforeSend: function(xhr) {
+                            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+                },
                 data: {
                     activeModules: activeModules
                 }

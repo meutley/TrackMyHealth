@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <fieldset>
+                <legend>New Blood Glucose Measurement (<%= current_user.blood_glucose_unit %>)</legend>
+                <%= render partial: 'blood_glucose/blood_glucose_form', locals: { measurement: @measurement, form_action: 'new' } %>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).on('turbolinks:load', () => {
+        BloodGlucose.NewEntry.init();
+    });
+</script>

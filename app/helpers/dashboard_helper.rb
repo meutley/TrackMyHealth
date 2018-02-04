@@ -32,6 +32,8 @@ module DashboardHelper
             html_out += render partial: "dashboard/blood_pressure_card", locals: { model: model }
         when "Weight"
             html_out += render partial: "dashboard/weight_card", locals: { model: model }
+        when "Blood Glucose"
+            html_out += render partial: "dashboard/blood_glucose_card", locals: { model: model }
         else
             html_out += render partial: "dashboard/placeholder_card", locals: { title: "(Placeholder)" }
         end

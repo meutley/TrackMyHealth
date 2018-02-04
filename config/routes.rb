@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   get 'blood_pressure/edit/:id', to: 'blood_pressure#edit', :as => :blood_pressure_edit
   patch 'blood_pressure/edit/:id', to: 'blood_pressure#edit'
   post 'blood_pressure/delete/:id', to: 'blood_pressure#delete', :as => :blood_pressure_delete
+
+  get 'blood_glucose', to: 'blood_glucose#index'
+  get 'blood_glucose/new'
+  post 'blood_glucose/new'
+  get 'blood_glucose/edit/:id', to: 'blood_glucose#edit', :as => :blood_glucose_edit
+  patch 'blood_glucose/edit/:id', to: 'blood_glucose#edit'
+  post 'blood_glucose/delete/:id', to: 'blood_glucose#delete', :as => :blood_glucose_delete
   
   get 'weight', to: 'weight#index'
   get 'weight/new'

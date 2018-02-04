@@ -1,8 +1,9 @@
+<%= csrf_meta_tags %>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
             <h1>Customize Dashboard</h1>
-            <form action="<%= dashboard_customize_path %>" method="POST" id="customize-dashboard-form">
+            <%= form_tag(dashboard_customize_path, method: :post, id: "customize-dashboard-form") do %>
                 <div class="row">
                     <div class="col-sm-5">
                         <label for="available-modules">Available modules</label>
@@ -35,7 +36,7 @@
                         <a href="<%= dashboard_path %>">Cancel</a>
                     </div>
                 </div>
-            </form>
+            <% end %>
         </div>
     </div>
 </div>

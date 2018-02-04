@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :blood_pressure_measurements
+  has_many :blood_glucose_measurements
   has_many :weight_measurements
 
   has_many :user_active_dashboard_modules

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <% if @measurements.length == 0 %>
+                <h2 class="text-danger">No blood glucose measurements</h2>
+            <% else %>
+                <h2>Blood glucose measurements</h2>
+            <% end %>
+            <a href="<%= blood_glucose_new_path %>">New Entry</a>
+            <br/><br/>
+            <% if flash[:message] %>
+                <div class="alert alert-<%= flash[:message_type] || 'success' %>">
+                    <%= flash[:message] %>
+                </div>
+            <% end %>
+            <% if @measurements.length > 0 %>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Measurement (<%= current_user.blood_glucose_unit %>)</th>
+                            <th>Notes</th>
+                            <th>Date/Time</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @measurements.each do |m| %>
+                            <tr>
+                                <td><%= m.value %></td>
+                                <td><%= m.notes %></td>
+                                <td><%= to_user_timezone_formatted(m.taken_at) %></td>
+                                <td><%= link_to "Edit", blood_glucose_edit_path(:id => m.id) %></td>
+                                <td><%= link_to "Delete", blood_glucose_delete_path(:id => m.id), method: :post, :class => "btn-delete" %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).on('turbolinks:load', () => {
+        Application.ActionLinks.init();
+    });
+</script>

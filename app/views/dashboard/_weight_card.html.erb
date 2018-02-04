@@ -7,7 +7,7 @@
         </p>
     </div>
     <div class="card-footer">
-        <span class="date-time-stamp"><%= to_user_timezone_formatted(@model.weight.created_at) %></span>
+        <span class="date-time-stamp"><%= to_user_timezone_formatted(@model.weight.taken_at) %></span>
     </div>
 <% else %>
     <%= render partial: 'dashboard/no_data', locals: { new_link: weight_new_path, is_placeholder: false } %>
