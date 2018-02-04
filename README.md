@@ -49,3 +49,7 @@ I have yet to resolve an issue regarding the bcrypt gem. If you receive an error
 ### Track Blood Pressure
 
 ![Track Blood Pressure](/../screenshots/screenshots/EditBloodPressure.png?raw=true "Track Blood Pressure")
+
+### Track Weight
+
+![Track Weight](/../screenshots/screenshots/EditWeight.png?raw=true "Track Weight")
