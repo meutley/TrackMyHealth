@@ -5,7 +5,7 @@
         </div>
     </div>
 <% end %>
-<%= form_for @measurement, url: { action: "edit" }, html: { class: "form" } do |f| %>
+<%= form_for @measurement, url: { action: form_action }, html: { class: "form" } do |f| %>
     <div class="form-group row">
         <%= f.label(:blood_pressure_measurement_position_id, "Position", class: "col-sm-1 control-label") %>
         <div class="col-sm-2">
