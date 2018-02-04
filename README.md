@@ -46,6 +46,10 @@ I have yet to resolve an issue regarding the bcrypt gem. If you receive an error
 
 ## Features
 
+### Customize Dashboard
+
+![Customize Dashboard](/../screenshots/screenshots/CustomizeDashboard.png?raw=true "Customize Dashboard")
+
 ### Track Blood Pressure
 
 ![Blood Pressure List](/../screenshots/screenshots/BloodPressureList.png?raw=true "Blood Pressure List")
