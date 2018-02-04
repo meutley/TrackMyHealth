@@ -1,0 +1,61 @@
+<%= form_for @measurement, url: { action: "edit" }, html: { class: "form" } do |f| %>
+    <div class="form-group row">
+        <%= f.label(:blood_pressure_measurement_position_id, "Position", class: "col-sm-1 control-label") %>
+        <div class="col-sm-2">
+            <%= f.collection_select(:blood_pressure_measurement_position_id, @positions, :id, :name, { :selected => @measurement.blood_pressure_measurement_position_id.to_i || 1 }, { :class => "form-control" }) %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <%= f.label(:blood_pressure_measurement_location_id, "Location", class: "col-sm-1 control-label") %>
+        <div class="col-sm-2">
+            <%= f.collection_select(:blood_pressure_measurement_location_id, @locations, :id, :name, { :selected => @measurement.blood_pressure_measurement_location_id.to_i || 1 }, { :class => "form-control" }) %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <%= f.label(:systolic, "Systolic", class: "col-sm-1 control-label") %>
+        <div class="col-sm-2">
+            <%= f.text_field(:systolic, class: "form-control") %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <%= f.label(:diastolic, "Diastolic", class: "col-sm-1 control-label") %>
+        <div class="col-sm-2">
+            <%= f.text_field(:diastolic, class: "form-control") %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <%= f.label(:pulse, "Pulse", class: "col-sm-1 control-label") %>
+        <div class="col-sm-2">
+            <%= f.text_field(:pulse, class: "form-control") %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <%= f.label(:taken_at, "Taken At", class: "col-sm-1 control-label") %>
+        <div class="col-sm-3">
+            <div class="input-group date" id="taken-at" data-target-input="nearest">
+                <%= f.text_field(:taken_at, class: "form-control date-time-picker", data: { :target => "#taken-at" }, value: to_user_timezone_formatted(@measurement.taken_at)) %>
+                <div class="input-group-append" data-target="#taken-at" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+                <div class="input-group-append" data-target="#taken-at" data-clear="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-times"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <%= label_tag(:notes, "Notes", class: "col-sm-4 control-label") %>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <%= f.text_area(:notes, size: "15x4", class: "form-control") %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <%= f.submit("Save", class: "btn btn-primary") %>
+            &nbsp;
+            <%= link_to "Cancel", "#", onclick: "history.back()" %>
+        </div>
+    </div>
+<% end %>

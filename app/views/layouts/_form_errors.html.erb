@@ -1,0 +1,8 @@
+<div class="error_explanation alert alert-danger">
+    <h5><%= pluralize(errors.count, "error") %> prohibited this <%= entity_name %> from being saved:</h5>
+    <ul>
+        <% errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>
