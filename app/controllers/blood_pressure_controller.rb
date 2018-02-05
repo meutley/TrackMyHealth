@@ -6,6 +6,14 @@ class BloodPressureController < ApplicationController
       .joins(:blood_pressure_measurement_position, :blood_pressure_measurement_location)
       .includes(:blood_pressure_measurement_position, :blood_pressure_measurement_location)
       .order(taken_at: :desc)
+
+    @total_count = @measurements.count
+    @number_of_pages = ((@total_count + PAGE_SIZE - 1) / PAGE_SIZE).clamp(1, 99999)
+    @current_page = (params[:page].to_i || 1).clamp(1, @number_of_pages)
+    @first_record_index = ((@current_page - 1) * PAGE_SIZE) + 1
+    @last_record_index = (@first_record_index + PAGE_SIZE - 1).clamp(0, @total_count)
+
+    @measurements = @measurements.offset(PAGE_SIZE * (@current_page - 1)).take(PAGE_SIZE)
   end
 
   def new

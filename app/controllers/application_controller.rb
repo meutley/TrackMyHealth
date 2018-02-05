@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   around_action :set_time_zone, if: :current_user
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  PAGE_SIZE = 25
+
   protected
     def convert_date_time_format(value)
       return Time.strptime(value, "%m/%d/%Y %I:%M %p") unless (Time.strptime(value, "%m/%d/%Y %I:%M %p") rescue ArgumentError) == ArgumentError

@@ -14,6 +14,7 @@
                 </div>
             <% end %>
             <% if @measurements.length > 0 %>
+                <span>Showing <%= @first_record_index %>-<%= @last_record_index %> of <%= @total_count %></span>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -36,6 +37,7 @@
                         <% end %>
                     </tbody>
                 </table>
+                <%= render partial: "common/pager", locals: { current_page: @current_page, number_of_pages: @number_of_pages, resource_path: 'blood_glucose' } %>
             <% end %>
         </div>
     </div>

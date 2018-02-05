@@ -1,0 +1,7 @@
+<ul class="pagination pagination-sm">
+    <li class="page-item<%= " disabled" if @current_page == 1 %>"><%= link_to "Previous", "#{resource_path}?page=#{@current_page - 1}", :class => "page-link" %></li>
+    <% for page_number in 1..@number_of_pages do %>
+        <li class="page-item<%= " active" if page_number == @current_page %>"><%= link_to page_number, "#{resource_path}?page=#{@current_page}", :class => "page-link" %></li>
+    <% end %>
+    <li class="page-item<%= " disabled" if @current_page == @number_of_pages %>"><%= link_to "Next", "#{resource_path}?page=#{@current_page + 1}", :class => "page-link" %></li>
+</ul>
