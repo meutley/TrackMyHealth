@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   protected
     def convert_date_time_format(value)
-      return Time.strptime(value, "%m/%d/%Y %I:%M %p").in_time_zone(current_user.timezone) unless (Time.strptime(value, "%m/%d/%Y %I:%M %p") rescue ArgumentError) == ArgumentError
+      return Time.zone.strptime(value, "%m/%d/%Y %I:%M %p") unless (Time.strptime(value, "%m/%d/%Y %I:%M %p") rescue ArgumentError) == ArgumentError
     end
 
   private
