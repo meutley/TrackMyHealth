@@ -19,12 +19,6 @@ ActiveRecord::Schema.define(version: 20180204163153) do
     t.datetime "taken_at"
   end
 
-  create_table "blood_glucose_units", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "blood_pressure_measurement_locations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -92,12 +86,6 @@ ActiveRecord::Schema.define(version: 20180204163153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "taken_at"
-  end
-
-  create_table "weight_units", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

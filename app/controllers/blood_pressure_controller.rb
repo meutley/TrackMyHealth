@@ -1,4 +1,6 @@
 class BloodPressureController < ApplicationController
+  include Comparable
+  
   before_action :authenticate_user!
   
   def index
